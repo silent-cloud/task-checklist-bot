@@ -22,8 +22,8 @@ module.exports = {
         const task = interaction.options.getString('task');
         const points = parseInt(interaction.options.getString('points'));
         tdf.taskcount += 1;
-        ti = tdf.checklist.findIndex((obj) => (obj.tiername === tier));
-        tdf.checklist[ti].tasks.append({ id: tdf.taskcount, task: task, points: points})
+        ti = tdf.checklist.findIndex((obj) => (obj.tierName === tier));
+        tdf.checklist[ti].tasks.push({ id: tdf.taskcount, task: task, points: points})
         fs.writeFileSync(tdfName2, JSON.stringify(tdf));
         await interaction.reply({ content: `Added ${task} to ${tier} that awards ${points} points.`, ephemeral: true});
     },

@@ -13,8 +13,7 @@ module.exports = {
                 .setDescription('The new tier\'s name.')),
     async execute(interaction) {
         const tiername = interaction.options.getString('tiername')
-        tdf.checklist = [];
-        tdf.checklist.append({ tierName: tiername, tasks: []})
+        tdf.checklist.push({ tierName: tiername, tasks: []})
         fs.writeFileSync(tdfName2, JSON.stringify(tdf));
         await interaction.reply({ content: `Added ${tiername} to the checklist`, ephemeral: true});
     },
