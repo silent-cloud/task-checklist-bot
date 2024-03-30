@@ -1,6 +1,6 @@
 const fs = require('node:fs');
-const tdfName = '../../testdata/data.json';
-const tdfName2 = './testdata/data.json';
+const tdfName = '../data.json';
+const tdfName2 = './data.json';
 const { ActionRowBuilder, SlashCommandBuilder, ButtonStyle, ButtonBuilder, EmbedBuilder, Embed } = require('discord.js')
 
 module.exports = {
