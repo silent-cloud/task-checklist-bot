@@ -1,27 +1,33 @@
 const fs = require('node:fs');
 const tdfName = '../data.json';
 const tdfName2 = './data.json';
-const { ActionRowBuilder, SlashCommandBuilder, ButtonStyle, ButtonBuilder, EmbedBuilder, Embed } = require('discord.js')
+const { ActionRowBuilder, SlashCommandBuilder, ButtonStyle, ButtonBuilder, EmbedBuilder, ChannelType } = require('discord.js')
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('init')
-        .setDescription('Starts a new checklist.')
+        .setDescription('Starts a new checklist.'),
+        /*
         .addChannelOption(option => 
             option.setName('channel')
                 .setDescription('The checklist channel to display the checklist.')
                 .setRequired(true)
-        ),
+        )
+        */
     async execute(interaction) {
-        const initialize = () => {
+        const initialize = async () => {
             const init = new Object();
-            init.channelID = interaction.options.getChannel('channel').id;
+            //init.channelID = interaction.options.getChannel('channel').id;
+            const category =  await interaction.guild.channels.create({ name: "Checklist", type: ChannelType.GuildCategory})
+            const categoryID = category.id
             init.checklist = [];
             init.participants = 0;
             init.taskcount = 0;
             init.pIndex = 0;
+            init.categoryID = categoryID
             fs.writeFileSync(tdfName2, '')
             fs.writeFileSync(tdfName2, JSON.stringify(init))
+            
         }
 
         if (fs.existsSync(tdfName2)) {

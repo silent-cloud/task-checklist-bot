@@ -1,0 +1,129 @@
+{
+    "tasks": [
+        {
+            "id": 1,
+            "task": "Get an effigy from Arch Glacor",
+            "points": 1
+        },
+        {
+            "id": 2,
+            "task": "Receive any unique item from Barrows (No corruption sigil)",
+            "points": 1
+        },
+        {
+            "id": 3,
+            "task": "Receive 2 different uniques from Graardor",
+            "points": 1
+        },
+        {
+            "id": 4,
+            "task": "Go bossing with a clanmate",
+            "points": 1
+        },
+        {
+            "id": 5,
+            "task": "Do a daily reaper",
+            "points": 1
+        },
+        {
+            "id": 6,
+            "task": "Receive a Dragon Chainbody from Kalphite Queen",
+            "points": 1
+        },
+        {
+            "id": 2,
+            "task": "Complete a Godsword (Shards and Hilt)",
+            "points": 1
+        },
+        {
+            "id": 7,
+            "task": "Get a leaf bladed weapon drop",
+            "points": 1
+        },
+        {
+            "id": 8,
+            "task": "Obtain an obsidian armor/weapon drop from Tzhaars",
+            "points": 1
+        },
+        {
+            "id": 9,
+            "task": "Get a granite maul drop from gargoyles",
+            "points": 1
+        },
+        {
+            "id": 10,
+            "task": "Get 2 different unique drops at Kree",
+            "points": 1
+        },
+        {
+            "id": 11,
+            "task": "Receive a ring from Dagganoth Kings",
+            "points": 1
+        },
+        {
+            "id": 12,
+            "task": "Receive 25k Marks of War (screenshot before and after)",
+            "points": 1
+        },
+        {
+            "id": 13,
+            "task": "Get any 2 unique drops from Kril",
+            "points": 1
+        },
+        {
+            "id": 14,
+            "task": "Get an egg drop from any dragon",
+            "points": 1
+        },
+        {
+            "id": 15,
+            "task": "Complete a full warpriest set",
+            "points": 1
+        },
+        {
+            "id": 16,
+            "task": "Getting ahead. (Get one trophy head as a drop)",
+            "points": 1
+        },
+        {
+            "id": 17,
+            "task": "Get a rdt as a drop or from a seren spirit above 100k",
+            "points": 1
+        },
+        {
+            "id": 18,
+            "task": "Aquire full set of Dark or Light Mystic from drops",
+            "points": 1
+        },
+        {
+            "id": 19,
+            "task": "Participate in a Demon Flash Mob",
+            "points": 1
+        },
+        {
+            "id": 20,
+            "task": "Get a Brine Sabre Drop",
+            "points": 1
+        },
+        {
+            "id": 21,
+            "task": "Get all the skull sceptre pieces from stronghold of security",
+            "points": 1
+        },
+        {
+            "id": 22,
+            "task": "Get abyssal whip/wand/orb drop from abyssal demons",
+            "points": 1
+        },
+        {
+            "id": 23,
+            "task": "Receive any unique item from Barrows (No corruption sigil)",
+            "points": 1
+        },
+        {
+            "id": 24,
+            "task": "Receive a Long Bone drop ",
+            "points": 1
+        }
+    ]
+}

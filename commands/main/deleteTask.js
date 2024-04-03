@@ -6,38 +6,14 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('addtask')
-        .setDescription('Add a task to the checklist.')
+        .setName('deletetask')
+        .setDescription('Delete a task from the checklist.')
         .addStringOption(option =>
             option.setName('tier')
                 .setDescription('The tier the task belongs to.')
                 .setRequired(true)
                 .setAutocomplete(true)
-        )
-        .addStringOption(option => 
-            option.setName('task')
-                .setDescription('The task description.')
-                .setRequired(true)
         ),
-        /*
-        .addStringOption(option => 
-            option.setName('points')
-                .setDescription('The amount of points awarded for completing this task.')
-        ),
-        */
-    async autocomplete(interaction) { 
-        const data = JSON.parse(fs.readFileSync(tdfName2, 'utf-8'))
-        const focusedValue = interaction.options.getFocused();
-        const tiers = data.checklist
-        const choices = [];
-        for (let i in tiers) {
-            choices.push(tiers[i].tierName)
-        }
-		const filtered = choices.filter(choice => choice.startsWith(focusedValue));
-		await interaction.respond(
-			filtered.map(choice => ({ name: choice, value: choice })),
-		);
-    },
     async execute(interaction) {
         const tier = interaction.options.getString('tier');
         const task = interaction.options.getString('task');
