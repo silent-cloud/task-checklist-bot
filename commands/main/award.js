@@ -32,10 +32,9 @@ module.exports = {
         //const task = interaction.options.getString('task');
         //const points = parseInt(interaction.options.getString('points'));
         const points = '';
-        const data = JSON.parse(fs.readFileSync(tdfName2, 'utf-8'))
+        let data = JSON.parse(fs.readFileSync(tdfName2, 'utf-8'))
         const embedArray = [];
 
-        data.taskcount -= 1;
         let ti = data.checklist.findIndex((obj) => (obj.tierName === tier));
         let pi = 0
         let firstDesc = ''
@@ -151,6 +150,7 @@ module.exports = {
             let limit = 0
             let embed = ''
             let embedArray = []
+            data = JSON.parse(fs.readFileSync(tdfName2, 'utf-8'))
             switch (i.customId) {
                 case 'next':
                     pi++;
@@ -240,23 +240,26 @@ module.exports = {
 
                     desc = ''
                     embedArray = []
-                    for (let taski in data.checklist[ti].tasks) {
-                        if (taski % 20 === 0 && taski > 0) {
-                            const newEmbed = new EmbedBuilder()
-                                .setTitle(data.checklist[ti].tierName)
-                                .setDescription(desc);
-                            embedArray.push(newEmbed);
-                            desc = `${data.checklist[ti].tasks[taski]}\n`;
+                    let pointsColumnWidth = 6
+                    let userColumnWidth = 60
+                    data.players.sort((a, b) => b.points - a.points)
+                    for (let playeri in data.players) {
+                        if (playeri % 15 === 0 && playeri > 0) {
+                            const standingsEmbed = new EmbedBuilder()
+                                .setTitle('Current Standings')
+                                .setDescription("```" + "Points".padStart(pointsColumnWidth, ' ') + ' | ' + "User".padEnd(userColumnWidth, ' ') + "\n" + "------".padStart(pointsColumnWidth, ' ') + ' | ' +  "----".padEnd(userColumnWidth, ' ') + '\n' + desc + "```")
+                            embedArray.push(standingsEmbed);
+                            desc = `${data.players[playeri].points}`.padStart(pointsColumnWidth, ' ') + ' | ' + `${data.players[playeri].name}`.padEnd(userColumnWidth, ' ') + '\n';
                         } else {
-                            desc += `${data.checklist[ti].tasks[taski]}\n`;
+                            desc += `${data.players[playeri].points}`.padStart(pointsColumnWidth, ' ') + ' | ' + `${data.players[playeri].name}`.padEnd(userColumnWidth, ' ') + '\n';
                         }
                     }
                     const buildEmbed = new EmbedBuilder()
-                        .setTitle(data.checklist[ti].tierName)
-                    if (desc !== '') { buildEmbed.setDescription(desc); }
+                        .setTitle('Current Standings')
+                        .setDescription("```" + "Points".padStart(pointsColumnWidth, ' ') + ' | ' + "User".padEnd(userColumnWidth, ' ') + "\n" + "------".padStart(pointsColumnWidth, ' ') + ' | ' +  "----".padEnd(userColumnWidth, ' ') + '\n' + desc + "```")
                     embedArray.push(buildEmbed);
-                    i.guild.channels.fetch(data.checklist[ti].channelID)
-                        .then(channel => channel.messages.fetch(data.checklist[ti].messageID)
+                    i.guild.channels.fetch(data.standingsID)
+                        .then(channel => channel.messages.fetch(data.standingsMessageID)
                             .then((msg) => msg.edit({ embeds: embedArray }))
                     )
 

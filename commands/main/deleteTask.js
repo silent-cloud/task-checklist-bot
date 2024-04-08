@@ -32,7 +32,7 @@ module.exports = {
         //const task = interaction.options.getString('task');
         //const points = parseInt(interaction.options.getString('points'));
         const points = '';
-        const data = JSON.parse(fs.readFileSync(tdfName2, 'utf-8'))
+        let data = JSON.parse(fs.readFileSync(tdfName2, 'utf-8'))
         const embedArray = [];
 
         data.taskcount -= 1;
@@ -147,6 +147,7 @@ module.exports = {
             let limit = 0
             let embed = ''
             let embedArray = []
+            data = JSON.parse(fs.readFileSync(tdfName2, 'utf-8'))
             switch (i.customId) {
                 case 'next':
                     pi++;

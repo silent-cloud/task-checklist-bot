@@ -20,6 +20,13 @@ module.exports = {
             //init.channelID = interaction.options.getChannel('channel').id;
             const checklistCategory =  await interaction.guild.channels.create({ name: "Checklist", type: ChannelType.GuildCategory})
             const playersCategory =  await interaction.guild.channels.create({ name: "Participants", type: ChannelType.GuildCategory})
+            const standings = await interaction.guild.channels.create({ name: "Current Standings"})
+            
+            const standingsEmbed = new EmbedBuilder()
+                .setTitle('Current Standings')
+                .setDescription("Points\tUser\n------\t----")
+            
+            const standingsMessage = await interaction.guild.channels.fetch(standings.id).then(channel => channel.send({ embeds: [standingsEmbed] }))
             init.checklist = [];
             init.players = []
             init.participants = 0;
@@ -27,6 +34,8 @@ module.exports = {
             init.pIndex = 0;
             init.checklistCategoryID = checklistCategory.id
             init.playersCategoryID = playersCategory.id
+            init.standingsID = standings.id
+            init.standingsMessageID = standingsMessage.id
             fs.writeFileSync(tdfName2, '')
             fs.writeFileSync(tdfName2, JSON.stringify(init))
             
