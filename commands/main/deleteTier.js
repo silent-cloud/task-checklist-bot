@@ -32,6 +32,9 @@ module.exports = {
         let ti = data.checklist.findIndex((obj) => (obj.tierName === tier));
         await interaction.guild.channels.fetch(data.checklist[ti].channelID).then(channel => channel.delete())
         data.checklist.splice(ti, 1)
+        for (let playeri in data.players) {
+            data.players[playeri].completed.splice(ti, 1)
+        }
         fs.writeFileSync(tdfName2, JSON.stringify(data));
         await interaction.reply({ content: `Removed ${tier} tier from the checklist.`, ephemeral: true});
     },

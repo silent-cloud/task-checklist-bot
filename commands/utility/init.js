@@ -18,13 +18,15 @@ module.exports = {
         const initialize = async () => {
             const init = new Object();
             //init.channelID = interaction.options.getChannel('channel').id;
-            const category =  await interaction.guild.channels.create({ name: "Checklist", type: ChannelType.GuildCategory})
-            const categoryID = category.id
+            const checklistCategory =  await interaction.guild.channels.create({ name: "Checklist", type: ChannelType.GuildCategory})
+            const playersCategory =  await interaction.guild.channels.create({ name: "Participants", type: ChannelType.GuildCategory})
             init.checklist = [];
+            init.players = []
             init.participants = 0;
             init.taskcount = 0;
             init.pIndex = 0;
-            init.categoryID = categoryID
+            init.checklistCategoryID = checklistCategory.id
+            init.playersCategoryID = playersCategory.id
             fs.writeFileSync(tdfName2, '')
             fs.writeFileSync(tdfName2, JSON.stringify(init))
             

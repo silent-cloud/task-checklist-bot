@@ -70,6 +70,9 @@ module.exports = {
             .then(channel => channel.messages.fetch(data.checklist[ti].messageID)
                 .then((msg) => msg.edit({ embeds: embedArray }))
         )
+        for (let playeri in data.players) {
+            data.players[playeri].completed[ti].push(0)
+        }
         fs.writeFileSync(tdfName2, JSON.stringify(data));
         const reply = (points) ? `Added ${task} to ${tier} that awards ${points} points.` : `Added ${task} to ${tier}`;
         await interaction.reply({ content: reply, ephemeral: true});

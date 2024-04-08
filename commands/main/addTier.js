@@ -19,14 +19,17 @@ module.exports = {
         ),
     async execute(interaction) {
         const tiername = interaction.options.getString('tiername')
-        const points = interaction.options.getString('points')
+        const points = parseInt(interaction.options.getString('points'))
         const data = JSON.parse(fs.readFileSync(tdfName2, 'utf-8'))
         const initEmbed = new EmbedBuilder()
             .setTitle(tiername)
-        const channel = await interaction.guild.channels.create({ name: tiername, parent: data.categoryID })
+        const channel = await interaction.guild.channels.create({ name: tiername, parent: data.checklistCategoryID })
         const channelID = channel.id
         const message = await interaction.guild.channels.fetch(channelID).then(channel => channel.send({ embeds: [initEmbed] }))
-        data.checklist.push({ channelID: channelID, messageID: [message.id], tierName: tiername, tasks: [], points: points})
+        data.checklist.push({ channelID: channelID, messageID: message.id, tierName: tiername, tasks: [], points: points})
+        for (let playeri in data.players) {
+            data.players[playeri].completed.push([])
+        }
         fs.writeFileSync(tdfName2, JSON.stringify(data));
         await interaction.reply({ content: `Added ${tiername} to the checklist. Each task awards ${points} point(s)`, ephemeral: true});
     },
