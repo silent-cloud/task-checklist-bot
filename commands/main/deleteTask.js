@@ -261,7 +261,7 @@ module.exports = {
                             .then((msg) => msg.edit({ embeds: embedArray }))
                     )
 
-                    fs.writeFileSync(tdfName2, JSON.stringify(data));
+                    fs.writeFileSync(tdfName2, JSON.stringify(data, '', 4));
                     break;
             }
         });

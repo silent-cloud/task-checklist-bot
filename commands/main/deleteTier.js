@@ -35,7 +35,7 @@ module.exports = {
         for (let playeri in data.players) {
             data.players[playeri].completed.splice(ti, 1)
         }
-        fs.writeFileSync(tdfName2, JSON.stringify(data));
+        fs.writeFileSync(tdfName2, JSON.stringify(data, '', 4));
         await interaction.reply({ content: `Removed ${tier} tier from the checklist.`, ephemeral: true});
     },
 };

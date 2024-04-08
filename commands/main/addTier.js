@@ -30,7 +30,7 @@ module.exports = {
         for (let playeri in data.players) {
             data.players[playeri].completed.push([])
         }
-        fs.writeFileSync(tdfName2, JSON.stringify(data));
+        fs.writeFileSync(tdfName2, JSON.stringify(data, '', 4));
         await interaction.reply({ content: `Added ${tiername} to the checklist. Each task awards ${points} point(s)`, ephemeral: true});
     },
 };

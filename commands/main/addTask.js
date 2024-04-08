@@ -73,7 +73,7 @@ module.exports = {
         for (let playeri in data.players) {
             data.players[playeri].completed[ti].push(0)
         }
-        fs.writeFileSync(tdfName2, JSON.stringify(data));
+        fs.writeFileSync(tdfName2, JSON.stringify(data, '', 4));
         const reply = (points) ? `Added ${task} to ${tier} that awards ${points} points.` : `Added ${task} to ${tier}`;
         await interaction.reply({ content: reply, ephemeral: true});
     },

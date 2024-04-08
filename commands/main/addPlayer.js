@@ -33,6 +33,7 @@ module.exports = {
         embedArray = []
         let pointsColumnWidth = 6
         let userColumnWidth = 60
+        data.players.sort((a, b) => b.points - a.points)
         for (let playeri in data.players) {
             if (playeri % 15 === 0 && playeri > 0) {
                 const standingsEmbed = new EmbedBuilder()
@@ -54,6 +55,6 @@ module.exports = {
         )
 
         await interaction.reply({ content: `Added ${player.username} to the event`, ephemeral: true});
-        fs.writeFileSync(tdfName2, JSON.stringify(data));
+        fs.writeFileSync(tdfName2, JSON.stringify(data, '', 4));
     },
 };
