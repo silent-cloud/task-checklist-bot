@@ -132,7 +132,7 @@ module.exports = {
 
         l = (data.checklist[ti].tasks.length < 10) ? data.checklist[ti].tasks.length : 10
         for (let taski = 0; taski < l; taski++) {
-            firstDesc += `${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]} - ` + ((data.players[playeri].completed[ti][taski] === 1) ? '✔️' : '❌') + '\n';
+            firstDesc += `- ${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]} - ` + ((data.players[playeri].completed[ti][taski] === 1) ? '✔️' : '❌') + '\n';
             //if (row2.components.length < 5) { row2.addComponents(choiceArr[taski]) } else { row3.addComponents(choiceArr[taski]) }
         }
         const firstEmbed = new EmbedBuilder()
@@ -169,7 +169,7 @@ module.exports = {
                     if (limit > data.checklist[ti].tasks.length) { limit = data.checklist[ti].tasks.length }
                     if ((taskStart + 10) > data.checklist[ti].tasks.length) { row1.setComponents(prev, dNext) } else { row1.setComponents(prev, next) }
                     for (let taski = taskStart; taski < limit; taski++) {
-                        desc += `${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]} - ` + ((data.players[playeri].completed[ti][taski] === 1) ? '✔️' : '❌') + '\n';
+                        desc += `- ${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]} - ` + ((data.players[playeri].completed[ti][taski] === 1) ? '✔️' : '❌') + '\n';
                         //if (row2.components.length < 5) { row2.addComponents(choiceArr[taski % 10]) } else { row3.addComponents(choiceArr[taski % 10]) }
                     }
                     componentsList = [];
@@ -192,7 +192,7 @@ module.exports = {
                     //row3.setComponents();
                     if ((taskStart - 10) < 0) { row1.setComponents(dPrev, next) } else { row1.setComponents(prev, next) }
                     for (let taski = taskStart; taski < limit; taski++) {
-                        desc += `${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]} - ` + ((data.players[playeri].completed[ti][taski] === 1) ? '✔️' : '❌') + '\n';
+                        desc += `- ${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]} - ` + ((data.players[playeri].completed[ti][taski] === 1) ? '✔️' : '❌') + '\n';
                         //if (row2.components.length < 5) { row2.addComponents(choiceArr[taski % 10]) } else { row3.addComponents(choiceArr[taski % 10]) }
                     }
                     componentsList = [];

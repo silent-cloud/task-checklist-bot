@@ -120,7 +120,7 @@ module.exports = {
 
         l = (data.checklist[ti].tasks.length < 10) ? data.checklist[ti].tasks.length : 10
         for (let taski = 0; taski < l; taski++) {
-            firstDesc += `${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]}\n`;
+            firstDesc += `- ${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]}\n`;
             if (row2.components.length < 5) { row2.addComponents(choiceArr[taski]) } else { row3.addComponents(choiceArr[taski]) }
         }
         const firstEmbed = new EmbedBuilder()
@@ -157,7 +157,7 @@ module.exports = {
                     if (limit > data.checklist[ti].tasks.length) { limit = data.checklist[ti].tasks.length }
                     if ((taskStart + 10) > data.checklist[ti].tasks.length) { row1.setComponents(prev, dNext, confirm) } else { row1.setComponents(prev, next, confirm) }
                     for (let taski = taskStart; taski < limit; taski++) {
-                        desc += `${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]}\n`;
+                        desc += `- ${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]}\n`;
                         if (row2.components.length < 5) { row2.addComponents(choiceArr[taski % 10]) } else { row3.addComponents(choiceArr[taski % 10]) }
                     }
                     componentsList = [];
@@ -180,7 +180,7 @@ module.exports = {
                     row3.setComponents();
                     if ((taskStart - 10) < 0) { row1.setComponents(dPrev, next, confirm) } else { row1.setComponents(prev, next, confirm) }
                     for (let taski = taskStart; taski < limit; taski++) {
-                        desc += `${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]}\n`;
+                        desc += `- ${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]}\n`;
                         if (row2.components.length < 5) { row2.addComponents(choiceArr[taski % 10]) } else { row3.addComponents(choiceArr[taski % 10]) }
                     }
                     componentsList = [];
@@ -220,7 +220,7 @@ module.exports = {
                     if (limit > data.checklist[ti].tasks.length) { limit = data.checklist[ti].tasks.length }
 
                     for (let taski = taskStart; taski < limit; taski++) {
-                        desc += `${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]}\n`;
+                        desc += `- ${eArr[taski % 10]} - ${data.checklist[ti].tasks[taski]}\n`;
                         if (row2.components.length < 5) { row2.addComponents(choiceArr[taski % 10]) } else { row3.addComponents(choiceArr[taski % 10]) }
                     }
                     
@@ -246,9 +246,9 @@ module.exports = {
                                 .setTitle(data.checklist[ti].tierName)
                                 .setDescription(desc);
                             embedArray.push(newEmbed);
-                            desc = `${data.checklist[ti].tasks[taski]}\n`;
+                            desc = `- ${data.checklist[ti].tasks[taski]}\n`;
                         } else {
-                            desc += `${data.checklist[ti].tasks[taski]}\n`;
+                            desc += `- ${data.checklist[ti].tasks[taski]}\n`;
                         }
                     }
                     const buildEmbed = new EmbedBuilder()

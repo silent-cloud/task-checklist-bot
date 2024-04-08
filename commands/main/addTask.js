@@ -57,9 +57,9 @@ module.exports = {
                     .setTitle(data.checklist[ti].tierName)
                     .setDescription(description);
                 embedArray.push(newEmbed);
-                description = `${data.checklist[ti].tasks[taski]}\n`;
+                description = `- ${data.checklist[ti].tasks[taski]}\n`;
             } else {
-                description += `${data.checklist[ti].tasks[taski]}\n`;
+                description += `- ${data.checklist[ti].tasks[taski]}\n`;
             }
         }
         const buildEmbed = new EmbedBuilder()
