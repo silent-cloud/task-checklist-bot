@@ -44,7 +44,7 @@ module.exports = {
                     .then((msg) => msg.edit({ embeds: embedArray }))
             )
 
-            await interaction.reply({ content: `Gave ${player.username} 1 point.`, ephemeral: true});
+            await interaction.reply({ content: `Took 1 point from ${player.username}.`, ephemeral: true});
             fs.writeFileSync(tdfName2, JSON.stringify(data, '', 4));
         } else {
             await interaction.reply({ content: `${player.username} is not participating`, ephemeral: true});
