@@ -151,6 +151,7 @@ module.exports = {
             let embed = ''
             let embedArray = []
             data = JSON.parse(fs.readFileSync(tdfName2, 'utf-8'))
+            playeri = data.players.findIndex((obj) => (obj.channelID === thisChannel));
             switch (i.customId) {
                 case 'next':
                     pi++;
