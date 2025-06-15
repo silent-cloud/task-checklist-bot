@@ -40,4 +40,4 @@ for (const file of eventFiles) {
     }
 }
 
-client.login(process.env.DEV_TOKEN);
+client.login(process.env.PROD_TOKEN);
